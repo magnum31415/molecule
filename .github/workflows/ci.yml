@@ -18,7 +18,7 @@ jobs:
 #          - centos8
           - debian10
 #          - ubuntu2404
-#          - ubuntu2204
+          - ubuntu2204
 #          - centos9
 #          - geerlingguy/docker-centos8-ansible:latest
 
