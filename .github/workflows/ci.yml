@@ -16,7 +16,7 @@ jobs:
       matrix:
         distro:
 #          - centos8
-#          - debian10
+          - debian10
 #          - ubuntu2404
 #          - ubuntu2204
 #          - centos9
