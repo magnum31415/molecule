@@ -17,7 +17,10 @@ jobs:
         distro:
 #          - centos8
 #          - debian10
-          - geerlingguy/docker-centos8-ansible:latest
+          - ubuntu2404
+          - ubuntu2204
+          - centos9
+#          - geerlingguy/docker-centos8-ansible:latest
 
     steps:
       - name: Check out the codebase.
@@ -40,4 +43,4 @@ jobs:
         env:
           PY_COLORS: '1'
           ANSIBLE_FORCE_COLOR: '1'
-#          MOLECULE_DISTRO: ${{ matrix.distro }}
+          MOLECULE_DISTRO: ${{ matrix.distro }}
