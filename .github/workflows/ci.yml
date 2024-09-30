@@ -15,8 +15,8 @@ jobs:
     strategy:
       matrix:
         distro:
-          - centos8
-#          - debian10
+#          - centos8
+          - debian10
 #          - ubuntu2404
 #          - ubuntu2204
 #          - centos9
