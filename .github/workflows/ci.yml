@@ -19,7 +19,7 @@ jobs:
           - debian10
 #          - ubuntu2404
           - ubuntu2204
-          - centos9
+          - fedora37
 #          - geerlingguy/docker-centos8-ansible:latest
 
     steps:
