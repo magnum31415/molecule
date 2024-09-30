@@ -16,8 +16,8 @@ jobs:
       matrix:
         distro:
 #          - centos8
-          - debian10
-          - geerlingguy/docker-centos8-ansible
+#          - debian10
+          - geerlingguy/docker-centos8-ansible:latest
 
     steps:
       - name: Check out the codebase.
