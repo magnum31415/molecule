@@ -32,8 +32,8 @@ jobs:
 
       - name: Install test dependencies.
         # run: pip3 install ansible molecule molecule-docker docker yamllint ansible-lint
-        #run: pip3 install ansible molecule molecule-plugins[docker] docker yamllint ansible-lint
-        run: pip3 install ansible molecule molecule-docker docker yamllint ansible-lint
+        run: pip3 install ansible molecule molecule-plugins[docker] docker yamllint ansible-lint
+        #run: pip3 install ansible molecule molecule-docker docker yamllint ansible-lint
 
 
       - name: Install test list dependencies.
