@@ -20,6 +20,8 @@ jobs:
           - ubuntu2204
           - fedora37
           - fedora39
+        python-version:
+          - 3.9      
 
     steps:
       - name: Check out the codebase.
@@ -28,7 +30,7 @@ jobs:
       - name: Set up Python 3.
         uses: actions/setup-python@v5
         with:
-          python-version: '3.x'
+          python-version: ${{ matrix.python-version }}
 
       - name: Install test dependencies.
         run: pip3 install ansible molecule molecule-plugins[docker] docker yamllint ansible-lint
