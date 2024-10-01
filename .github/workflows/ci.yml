@@ -21,7 +21,7 @@ jobs:
           - fedora37
           - fedora39
         python-version:
-          - 3.9.x      
+          - 3.x      
 
     steps:
       - name: Check out the codebase.
