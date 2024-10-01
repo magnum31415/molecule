@@ -15,13 +15,13 @@ jobs:
     strategy:
       matrix:
         distro:
-          # - centos7 #It has no python3
+          # - centos7 #failts due it has no python3
           - debian10
           - ubuntu2204
           - fedora37
           - fedora39
         python-version:
-          - 3.9.x      
+          - 3.x      
 
     steps:
       - name: Check out the codebase.
@@ -34,8 +34,6 @@ jobs:
 
       - name: Install test dependencies.
         run: pip3 install ansible molecule molecule-plugins[docker] docker yamllint ansible-lint
-        #run: pip3 install ansible molecule molecule-docker docker yamllint ansible-lint
-
 
       - name: Install test list dependencies.
         run: pip3 list
