@@ -15,7 +15,7 @@ jobs:
     strategy:
       matrix:
         distro:
-          - centos7
+          # - centos7 #It has no python3
           - debian10
           - ubuntu2204
           - fedora37
