@@ -15,12 +15,11 @@ jobs:
     strategy:
       matrix:
         distro:
-#          - centos8
+          - centos7
           - debian10
-#          - ubuntu2404
           - ubuntu2204
           - fedora37
-#          - geerlingguy/docker-centos8-ansible:latest
+          - fedora39
 
     steps:
       - name: Check out the codebase.
