@@ -1,6 +1,6 @@
 # molecule
 
-## PREREQUISITOS - Instalar en un entorno virtual (recomendado)
+## 1) Prerequisitos: Instalar en un entorno virtual (recomendado)
 ````bash
 python3 -m venv .venv
 source .venv/bin/activate
@@ -16,7 +16,7 @@ Después, ejecutas Molecule con:
 .venv/bin/molecule test
 ````
 
-## Inicializar Molecule en tu rol
+## 2) Inicializar Molecule en tu rol
 
 Desde la raíz del rol (donde está meta/, tasks/, etc.):
 
@@ -24,11 +24,12 @@ Desde la raíz del rol (donde está meta/, tasks/, etc.):
 molecule init scenario default -d docker
 ````
 
-##  molecule/default/molecule.yml
+##  3) molecule/default/molecule.yml
 
 Prueba 3 plataformas y usa Ansible como provisioner y verifier:
 
 ````yaml
+---
 dependency:
   name: galaxy
 
@@ -89,7 +90,7 @@ Usamos imágenes de Jeff Geerling con systemd para que los servicios funcionen.
 Si tu rol usa become: true, estás cubierto por defecto en estas imágenes.
 
 
-##  molecule/default/converge.yml
+##  4) molecule/default/converge.yml
 
 Ejecuta el rol y deja instaladas dependencias mínimas (curl, etc.) para las comprobaciones:
 
@@ -130,7 +131,7 @@ Ejecuta el rol y deja instaladas dependencias mínimas (curl, etc.) para las com
 
 ````
 
-## molecule/default/verify.yml
+## 5) molecule/default/verify.yml
 
 Comprueba: usuario/grupo, binario/servicio, puerto 9100, y que se generó el fichero file_sd con labels esperadas.
 
@@ -236,7 +237,7 @@ Comprueba: usuario/grupo, binario/servicio, puerto 9100, y que se generó el fic
 ````
 
 
-## Ajustes en tu rol para que la prueba pase
+## 6) Ajustes en tu rol para que la prueba pase
 
 En tu rol ya tienes algo así (según lo que hablamos):
 
@@ -263,7 +264,7 @@ Ejemplo (handler seguro):
   when: not (prometheus_reload_enabled | default(false))
 ````
 
-## Ejecutar
+## 7) Ejecutar
 # En el directorio del rol
 ````bash
 molecule test
