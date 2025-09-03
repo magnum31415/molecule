@@ -235,7 +235,53 @@ Comprueba: usuario/grupo, binario/servicio, puerto 9100, y que se generó el fic
       when: targets_files.matched | int >= 1
 
 ````
+## 6) Prepare
 
+````yaml
+---
+- name: Prepare containers
+  hosts: all
+  become: true
+  tasks:
+    - name: Detect OS family
+      ansible.builtin.setup:
+        filter: ansible_os_family
+
+    # --- RHEL/UBI9 ---
+    - name: Install Python and tools on RHEL/UBI
+      ansible.builtin.package:
+        name:
+          - python3
+          - python3-libselinux
+          - python3-libsemanage
+          - curl
+          - iproute
+          - procps-ng
+          - net-tools
+          - tar
+        state: present
+      when: ansible_os_family == 'RedHat'
+
+    # --- Ubuntu 22.04 ---
+    - name: Update apt cache (Debian/Ubuntu)
+      ansible.builtin.apt:
+        update_cache: true
+      when: ansible_os_family == 'Debian'
+
+    - name: Install Python and tools on Debian/Ubuntu
+      ansible.builtin.apt:
+        name:
+          - python3
+          - python3-apt
+          - curl
+          - iproute2
+          - procps
+          - net-tools
+          - tar
+        state: present
+      when: ansible_os_family == 'Debian'
+
+````
 
 ## 6) Ajustes en tu rol para que la prueba pase
 
@@ -267,10 +313,14 @@ Ejemplo (handler seguro):
 ## 7) Ejecutar
 # En el directorio del rol
 ````bash
-molecule test
+molecule test        #Ejecutar todo el ciclo (lint, crear contenedores, preparar, aplicar rol, verificar, destruir)
+
 # o en ciclos rápidos
-molecule create
-molecule converge
-molecule verify
-molecule destroy
+
+molecule create      # crea los contenedores (ubi9, ubuntu2204)
+molecule prepare     # instala python, curl, etc. dentro de ellos
+molecule converge    # aplica tu rol node_exporter
+molecule idempotence # comprueba que el rol es idempotente
+molecule verify      # ejecuta verify.yml (checks de user, servicio, puerto, file_sd)
+molecule destroy     # elimina los contenedores
 ````
