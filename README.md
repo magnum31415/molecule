@@ -1,6 +1,8 @@
 # molecule
 
 ## 1) Prerequisitos: Instalar en un entorno virtual (recomendado)
+
+Instala las ultimas versiones (puede no ser compatible con hosts con version de python anterior)
 ````bash
 python3 -m venv .venv
 source .venv/bin/activate
@@ -10,6 +12,28 @@ pip install ansible-core
 pip install "molecule>=6.0.0"
 pip install "molecule-plugins[docker]" ansible-lint yamllint pytest testinfra
 ````
+
+Comandos para crear un venv limpio con la rama de Ansible 9 (core 2.16, compatible con Python 3.6 en los managed nodes) y Molecule 6.x:
+
+````bash
+# 1. Crear el venv (puedes usar Python 3.9, 3.10 o 3.11 en tu portátil)
+python3 -m venv .venv
+source .venv/bin/activate
+
+# 2. Actualizar pip y setuptools
+pip install --upgrade pip setuptools wheel
+
+# 3. Instalar ansible 9.x (trae ansible-core 2.16.x)
+pip install "ansible==9.*"
+
+# 4. Instalar molecule 6.x
+pip install "molecule>=6,<7"
+
+# 5. (Opcional) Instalar controladores de molecule, por ejemplo docker
+pip install "molecule-plugins[docker]>=23.5.0"
+````
+
+
 Así dejas todas las dependencias dentro de .venv/ y no ensucias el Python global.
 Después, ejecutas Molecule con:
 ````bash
