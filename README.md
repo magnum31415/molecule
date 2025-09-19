@@ -46,6 +46,12 @@ Después, ejecutas Molecule con:
 
 ## 2) Inicializar Molecule en tu rol
 
+Creamos el rol
+
+````bash
+ansible-galaxy init ROLE-NAME  --force
+````
+
 Desde la raíz del rol (donde está meta/, tasks/, etc.):
 
 ````bash
