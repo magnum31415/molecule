@@ -662,4 +662,5 @@ molecule converge    # aplica tu rol node_exporter
 molecule idempotence # comprueba que el rol es idempotente
 molecule verify      # ejecuta verify.yml (checks de user, servicio, puerto, file_sd)
 molecule destroy     # elimina los contenedores
+docker rm -f $(docker ps -aq) 2>/dev/null # elimina los contenedores
 ````
