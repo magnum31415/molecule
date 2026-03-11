@@ -17,6 +17,8 @@ sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt update
 sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
 sudo usermod -aG docker $USER
+sudo service docker start
+sudo service docker enable
 docker run hello-world
 ````
 
